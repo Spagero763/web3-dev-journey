@@ -54,27 +54,30 @@ export default function ClaimReputation() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Input
-          type="number"
-          placeholder="Amount to claim"
-          value={amount === 0 ? '' : amount}
-          onChange={(e) => setAmount(Number(e.target.value))}
-          disabled={isLoading}
-        />
-        <Button
-          onClick={handleClaim}
-          disabled={!isConnected || isLoading}
-          className="w-full"
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              {isSubmitting ? 'Claiming...' : 'Confirming...'}
-            </>
-          ) : (
-            "Claim DEVREP"
-          )}
-        </Button>
+        <div className="flex items-center space-x-2">
+          <Input
+            type="number"
+            placeholder="Amount to claim"
+            value={amount === 0 ? '' : amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            disabled={isLoading}
+            className="flex-1"
+          />
+          <Button
+            onClick={handleClaim}
+            disabled={!isConnected || isLoading}
+            className="w-auto"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {isSubmitting ? 'Claiming...' : 'Confirming...'}
+              </>
+            ) : (
+              "Claim DEVREP"
+            )}
+          </Button>
+        </div>
         {isConfirmed && <p className="text-green-600 text-sm">✅ Claimed successfully!</p>}
         {error && <p className="text-red-600 text-sm mt-2">❌ {(error as any).shortMessage || error.message}</p>}
       </CardContent>

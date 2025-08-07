@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useAccount, useReadContract } from "wagmi";
@@ -26,8 +27,6 @@ export function ReputationBalanceCard() {
     },
   });
 
-  // Assuming DEVREP has 18 decimals, standard for ERC20.
-  // The contract ABI doesn't specify, so this is a reasonable default.
   const formattedBalance =
     typeof balance !== "undefined"
       ? parseFloat(formatUnits(balance, 18)).toFixed(2)
@@ -48,9 +47,9 @@ export function ReputationBalanceCard() {
         {isLoading ? (
           <Skeleton className="w-3/4 h-10" />
         ) : (
-          <p className="text-4xl font-bold">{formattedBalance}</p>
+          <p className="text-3xl font-bold">{formattedBalance}</p>
         )}
-        <p className="text-sm text-muted-foreground mt-1">DEVREP</p>
+        <p className="text-sm text-muted-foreground">DEVREP</p>
       </CardContent>
     </Card>
   );

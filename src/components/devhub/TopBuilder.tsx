@@ -21,12 +21,12 @@ export default function TopBuilder() {
         {isLoading && <Skeleton className="w-full h-8" />}
         {isError && <p className="text-red-600 text-sm">Failed to load leaderboard.</p>}
         {data && Array.isArray(data) && (
-          <div className="text-sm break-all">
-            <p className="font-mono text-xs">
-              <strong>Address:</strong> {String(data[0])}
+          <div className="text-sm break-all space-y-1">
+            <p className="font-mono text-xs truncate">
+              {String(data[0])}
             </p>
-            <p className="font-semibold">
-              <strong>Points:</strong> {Number(data[1])}
+            <p className="font-semibold text-lg">
+              {Number(data[1])} Points
             </p>
           </div>
         )}
