@@ -16,7 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DEV_IDENTITY_CONTRACT } from "@/lib/contracts";
+import { LEADERBOARD_CONTRACT } from "@/lib/contracts";
 import { useToast } from "@/hooks/use-toast";
 import { Github, User, Loader2 } from "lucide-react";
 
@@ -64,7 +64,7 @@ export function IdentityClaimCard() {
       return;
     }
     writeContract({
-      ...DEV_IDENTITY_CONTRACT,
+      ...LEADERBOARD_CONTRACT,
       functionName: "claimIdentity",
       args: [farcaster, github],
     });
