@@ -2,6 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Code2 } from "lucide-react";
 import SubmitProof from "@/components/SubmitProof";
 import Leaderboard from "@/components/Leaderboard";
+import ClaimReputation from "@/components/ClaimReputation";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         </h1>
         <SubmitProof />
         <Leaderboard />
+        <ClaimReputation />
       </main>
       <footer className="py-6 md:px-8 md:py-0">
         <div className="container flex flex-col items-center justify-center gap-4 md:h-24 md:flex-row">
