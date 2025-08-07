@@ -1,104 +1,81 @@
-# 🧱 Proof of Build Protocol
+# 🛠️ Builder Reputation Dashboard
 
-A decentralized builder reputation system on the Base Sepolia testnet that allows developers to:
+A decentralized dApp to submit proof of contributions, track top builders, and claim onchain reputation — powered by three smart contracts deployed on Base Sepolia.
 
-- ✅ Submit GitHub project proofs
-- 📊 View leaderboard of top contributors
-- 🏅 Claim reputation tokens (ERC-20)
+## 🧱 Smart Contracts
 
-Built with **Solidity**, **Next.js**, **Wagmi**, **RainbowKit**, and **Tailwind CSS**.
+- `ProofOfBuild.sol` – Allows users to submit GitHub repo links as contributions
+- `LeaderboardManager.sol` – Tracks builder scores and top contributor
+- `ReputationToken.sol` – Lets users claim reputation tokens onchain
 
----
+All contracts are deployed on **Base Sepolia testnet** and verified on BaseScan.
 
-## 🚀 Live Demo
+## 🌐 Live dApp
 
-[![Deploy on Vercel](https://vercel.com/button)](https://vercel.com)
+> [Visit Live App (Vercel)](https://your-dapp.vercel.app)
 
----
+## 🧰 Tech Stack
 
-## 📦 Smart Contracts
-
-Deployed to **Base Sepolia Testnet**
-
-| Contract | Address | Description |
-|---------|---------|-------------|
-| `ProofOfBuild` | `0x0Dcbdd09C92e8Cf449e3bf058b7Bd50b0677268a` | Lets builders submit GitHub repo proof |
-| `LeaderboardManager` | `0xE26B41F1A90B140eFC08D3204d453DAD74c34839` | Tracks and ranks builders |
-| `ReputationToken` | `0x73a93b3b4273BeBaeE530f9F037Bf111CeCc31F2` | ERC-20 mintable reputation token |
-
-All contracts are verified on BaseScan.
-
----
-
-## 🧠 Features
-
-- Connect wallet via [RainbowKit](https://rainbowkit.com)
-- Submit GitHub repo as proof of build
-- Track leaderboard of contributors
-- Admin-only reputation token minting (via `Ownable`)
-
----
-
-## 🛠 Tech Stack
-
-- **Frontend**: Next.js App Router, Tailwind CSS
-- **Wallet Integration**: RainbowKit + Wagmi (v2)
-- **Smart Contracts**: Solidity + OpenZeppelin
-- **Deployment**: Vercel, Remix IDE, BaseScan
-
----
+- Next.js (App Router)
+- TypeScript + Tailwind CSS
+- RainbowKit + Wagmi
+- Base Sepolia Smart Contracts
+- WalletConnect (via RainbowKit)
 
 ## 📁 Project Structure
 
 ```bash
-├── app/
-│   ├── page.tsx           # Homepage
-│
-├── components/
-│   ├── SubmitProof.tsx    # Submit GitHub repo
-│   ├── Leaderboard.tsx    # Display leaderboard
-│   └── ClaimReputation.tsx# Mint tokens
-│
-├── hooks/
-│   ├── useProof.ts        # ProofOfBuild hooks
-│   ├── useLeaderboard.ts  # LeaderboardManager hooks
-│   └── useReputation.ts   # ReputationToken hooks
-│
-├── public/
-├── styles/
-├── tailwind.config.js
-├── wagmi.ts               # Wagmi config
-└── README.md
+├── src/
+│   ├── app/
+│   │   └── page.tsx (Home layout)
+│   ├── components/
+│   │   ├── devhub/
+│   │   │   ├── ProjectSubmissionCard.tsx
+│   │   │   ├── TopBuilder.tsx
+│   │   │   └── ClaimReputation.tsx
+│   ├── hooks/
+│   │   ├── useProofSubmission.ts
+│   │   ├── useLeaderboard.ts
+│   │   └── useReputation.ts
+│   ├── abi/
+│   │   ├── ProofOfBuild.json
+│   │   ├── LeaderboardManager.json
+│   │   └── ReputationToken.json
+│   └── lib/
+│       ├── contracts.ts
+│       └── wagmi.ts
+└── public/
 ```
 
----
-
-## 🧪 Local Development
+## 🚀 Local Development
 
 ```bash
-# Install dependencies
+git clone https://github.com/yourusername/builder-dapp.git
+cd builder-dapp
 npm install
-
-# Run locally
 npm run dev
 ```
 
-> You must have a wallet connected to **Base Sepolia**. Use [Base Faucet](https://sepoliafaucet.com/base/goerli) for test ETH.
+## 🌍 Deployment
+
+Deployed via [Vercel](https://vercel.com) with environment:
+
+```
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_id
+```
 
 ---
 
-## 📸 Screenshots
+## 🏆 How it Works
 
-> Add screenshots here of each section (optional, but recommended)
-
----
-
-## 🧑‍💻 Author
-
-Built by [@Spagero](https://talentprotocol.com/spagero) for Talent Protocol's **Builder Leaderboard** 🏆
+| Feature             | Description                              |
+| ------------------- | ---------------------------------------- |
+| 🧾 Submit Proof     | Add your GitHub repo to earn points      |
+| 🏅 Top Builder      | View the highest scoring contributor     |
+| 🔓 Claim Reputation | Redeem earned points into onchain tokens |
 
 ---
 
 ## 📜 License
 
-MIT
+MIT — use it freely!
