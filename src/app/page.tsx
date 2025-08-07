@@ -23,12 +23,14 @@ export default function Home() {
         </div>
       </header>
       <main className="flex-1 py-10 px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Proof of Build 🧱
-        </h1>
-        <SubmitProof />
-        <Leaderboard />
-        <ClaimReputation />
+        <div className="container max-w-2xl mx-auto space-y-8">
+          <h1 className="text-3xl font-bold text-center">
+            Proof of Build 🧱
+          </h1>
+          <SubmitProof />
+          <Leaderboard />
+          <ClaimReputation />
+        </div>
       </main>
       <footer className="py-6 md:px-8 md:py-0">
         <div className="container flex flex-col items-center justify-center gap-4 md:h-24 md:flex-row">

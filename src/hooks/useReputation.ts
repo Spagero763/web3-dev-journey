@@ -1,18 +1,23 @@
 // hooks/useReputation.ts
-import { useContractWrite } from 'wagmi'
+import { useWriteContract } from 'wagmi'
 import { CONTRACTS } from '@/lib/contracts'
 
-export function useReputationMint() {
-  const { write, data, isLoading, isSuccess, error } = useContractWrite({
-    address: CONTRACTS.reputationToken.address as `0x${string}`,
-    abi: CONTRACTS.reputationToken.abi,
-    functionName: 'mint',
-  })
+export function useReputationMint(options: any = {}) {
+  const { writeContract, isPending, isSuccess, error, data } = useWriteContract()
+
+  const mintReputation = (args: any) => {
+     writeContract({
+      address: CONTRACTS.reputationToken.address as `0x${string}`,
+      abi: CONTRACTS.reputationToken.abi,
+      functionName: 'mint',
+      ...args,
+    }, options)
+  }
 
   return {
-    mintReputation: write,
+    mintReputation,
     data,
-    isLoading,
+    isPending,
     isSuccess,
     error,
   }

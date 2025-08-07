@@ -4,11 +4,31 @@
 import { useState } from 'react'
 import { useProofSubmission } from '@/hooks/useProofSubmission'
 import { useAccount } from 'wagmi'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/hooks/use-toast'
 
 export default function SubmitProof() {
   const [repo, setRepo] = useState('')
-  const { submitProof, isLoading, isSuccess, error } = useProofSubmission()
   const { address } = useAccount()
+  const { toast } = useToast();
+
+  const { submitProof, isPending, isSuccess, error } = useProofSubmission({
+    onSuccess: () => {
+      toast({
+        title: "Proof Submitted!",
+        description: "Your GitHub repository has been submitted.",
+      });
+    },
+    onError: (err) => {
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: err.message,
+      });
+    }
+  })
 
   const handleSubmit = () => {
     if (!repo || !address) return
@@ -16,29 +36,33 @@ export default function SubmitProof() {
   }
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white rounded-2xl shadow">
-      <h2 className="text-xl font-bold mb-4">Submit Your GitHub Proof</h2>
-      <input
-        type="text"
-        value={repo}
-        onChange={(e) => setRepo(e.target.value)}
-        placeholder="https://github.com/your-repo"
-        className="w-full p-2 border rounded mb-3"
-      />
-      <button
-        onClick={handleSubmit}
-        disabled={isLoading}
-        className="w-full p-2 bg-black text-white rounded hover:bg-gray-800"
-      >
-        {isLoading ? 'Submitting...' : 'Submit Proof'}
-      </button>
-
-      {isSuccess && (
-        <p className="mt-2 text-green-600">Proof submitted successfully!</p>
-      )}
-      {error && (
-        <p className="mt-2 text-red-600">Error: {(error as any).message}</p>
-      )}
-    </div>
+    <Card className="rounded-2xl shadow-md">
+      <CardHeader>
+        <CardTitle className="text-xl font-bold">Submit Your GitHub Proof</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <Input
+            type="text"
+            value={repo}
+            onChange={(e) => setRepo(e.target.value)}
+            placeholder="https://github.com/your-repo"
+          />
+          <Button
+            onClick={handleSubmit}
+            disabled={isPending || !address}
+            className="w-full transition"
+          >
+            {isPending ? 'Submitting...' : 'Submit Proof'}
+          </Button>
+          {isSuccess && (
+            <p className="mt-2 text-green-600">Proof submitted successfully!</p>
+          )}
+          {error && (
+            <p className="mt-2 text-red-600">Error: {(error as any).shortMessage || (error as any).message}</p>
+          )}
+        </div>
+      </CardContent>
+    </Card>
   )
 }
