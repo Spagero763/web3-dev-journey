@@ -12,8 +12,8 @@ export default function TopBuilder() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <Trophy className="w-5 h-5 mr-2 text-accent" />
+        <CardTitle className="flex items-center text-base font-medium">
+          <Trophy className="w-4 h-4 mr-2 text-accent" />
           Top Builder
         </CardTitle>
       </CardHeader>

@@ -35,8 +35,8 @@ export function ReputationBalanceCard() {
   return (
     <Card className="sticky top-20">
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <Medal className="w-5 h-5 mr-2 text-accent" />
+        <CardTitle className="flex items-center text-base font-medium">
+          <Medal className="w-4 h-4 mr-2 text-accent" />
           Your Reputation
         </CardTitle>
         <CardDescription>

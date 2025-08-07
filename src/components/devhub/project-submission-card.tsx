@@ -89,6 +89,8 @@ export function ProjectSubmissionCard() {
     });
   };
 
+  const isLoading = isSubmitting || isConfirming || isSummarizing;
+
   return (
     <Card>
       <CardHeader>
@@ -108,15 +110,14 @@ export function ProjectSubmissionCard() {
               placeholder="https://github.com/user/repo"
               value={repoUrl}
               onChange={(e) => setRepoUrl(e.target.value)}
-              disabled={isSubmitting || isConfirming || isSummarizing}
+              disabled={isLoading}
               className="pl-10"
             />
           </div>
         </div>
         <Button
           onClick={handleSubmitProof}
-          disabled={!isConnected || isSubmitting || isConfirming || isSummarizing}
-          className="bg-green-600 hover:bg-green-700 text-white"
+          disabled={!isConnected || isLoading}
         >
           {isConfirming ? (
             <>

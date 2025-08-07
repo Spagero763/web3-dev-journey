@@ -48,8 +48,8 @@ export default function ClaimReputation() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <Award className="w-5 h-5 mr-2 text-primary" />
+        <CardTitle className="flex items-center text-base font-medium">
+          <Award className="w-4 h-4 mr-2 text-primary" />
           Claim Reputation
         </CardTitle>
       </CardHeader>
@@ -67,6 +67,7 @@ export default function ClaimReputation() {
             onClick={handleClaim}
             disabled={!isConnected || isLoading}
             className="w-auto"
+            size="sm"
           >
             {isLoading ? (
               <>
