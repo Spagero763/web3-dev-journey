@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-};
-
-export default nextConfig;
+  env: {
+    NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+  },
+  webpack: (config, { isServer, webpack }) => {
+    if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
+      throw new Error('NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not set in .env');
+    }
+    return config;
+  },

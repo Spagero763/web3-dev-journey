@@ -6,8 +6,4 @@ if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
 }
 
 export const config = getDefaultConfig({
-  appName: "DevHub",
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
-  chains: [baseSepolia],
-  ssr: true,
-});
+  appName: "Dev
