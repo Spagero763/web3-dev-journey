@@ -57,7 +57,7 @@ export default function ClaimReputation() {
         <div className="flex items-center space-x-2">
           <Input
             type="number"
-            placeholder="Amount to claim"
+            placeholder="Enter amount to claim"
             value={amount === 0 ? '' : amount}
             onChange={(e) => setAmount(Number(e.target.value))}
             disabled={isLoading}

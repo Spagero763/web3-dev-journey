@@ -86,7 +86,7 @@ export function IdentityClaimCard() {
             <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               id="farcaster"
-              placeholder="e.g., vitalik"
+              placeholder="Your Farcaster Username"
               value={farcaster}
               onChange={(e) => setFarcaster(e.target.value)}
               disabled={isClaiming || isConfirming}
@@ -100,7 +100,7 @@ export function IdentityClaimCard() {
             <Github className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               id="github"
-              placeholder="e.g., satoru-nakamoto"
+              placeholder="Your GitHub Username"
               value={github}
               onChange={(e) => setGithub(e.target.value)}
               disabled={isClaiming || isConfirming}
