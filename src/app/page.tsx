@@ -20,7 +20,6 @@ export default function Home() {
     submitProof,
     isPending: isSubmitting,
     isSuccess: isSubmitSuccess,
-    error: submitError,
   } = useProofSubmission({
     onSuccess: () => {
       toast({
@@ -52,7 +51,6 @@ export default function Home() {
     mintReputation,
     isPending: isClaiming,
     isSuccess: isClaimSuccess,
-    error: claimError,
   } = useReputationMint({
     onSuccess: () => {
       toast({
@@ -106,9 +104,6 @@ export default function Home() {
            {isSubmitSuccess && (
             <p className="mt-2 text-green-600">Proof submitted successfully!</p>
           )}
-          {submitError && (
-            <p className="mt-2 text-red-600">Error: {(submitError as any).shortMessage || (submitError as any).message}</p>
-          )}
         </section>
 
         {/* Top Builder */}
@@ -151,9 +146,6 @@ export default function Home() {
           </button>
            {isClaimSuccess && (
             <p className="mt-2 text-green-600">Reputation claimed successfully!</p>
-          )}
-          {claimError && (
-            <p className="mt-2 text-red-600">Error: {(claimError as any).shortMessage || (claimError as any).message}</p>
           )}
         </section>
       </main>

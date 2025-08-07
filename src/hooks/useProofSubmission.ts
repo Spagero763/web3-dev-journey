@@ -1,14 +1,14 @@
 // hooks/useProofSubmission.ts
 import { useWriteContract } from 'wagmi'
-import { CONTRACTS } from '@/lib/contracts'
+import { PROOF_OF_BUILD_CONTRACT } from '@/lib/contracts'
+import type { Abi } from 'viem';
 
 export function useProofSubmission(options: any = {}) {
-  const { writeContract, data, isPending, isSuccess, error } = useWriteContract()
+  const { writeContract, isPending, isSuccess, error, data } = useWriteContract()
   
   const submitProof = (args: any) => {
     writeContract({
-      address: CONTRACTS.proofOfBuild.address as `0x${string}`,
-      abi: CONTRACTS.proofOfBuild.abi,
+      ...(PROOF_OF_BUILD_CONTRACT as { address: `0x${string}`; abi: Abi }),
       functionName: 'submitProof',
       ...args,
     }, options)

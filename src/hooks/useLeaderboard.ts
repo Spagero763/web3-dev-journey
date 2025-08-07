@@ -1,19 +1,18 @@
 // hooks/useLeaderboard.ts
-import { useContractRead } from 'wagmi'
-import { CONTRACTS } from '@/lib/contracts'
+import { useReadContract } from 'wagmi'
+import { LEADERBOARD_CONTRACT } from '@/lib/contracts'
+import type { Abi } from 'viem';
 
 export function useTopBuilder() {
-  return useContractRead({
-    address: CONTRACTS.leaderboard.address as `0x${string}`,
-    abi: CONTRACTS.leaderboard.abi,
+  return useReadContract({
+    ...(LEADERBOARD_CONTRACT as { address: `0x${string}`; abi: Abi }),
     functionName: 'getTopBuilder',
   })
 }
 
 export function useBuilder(address: `0x${string}`) {
-  return useContractRead({
-    address: CONTRACTS.leaderboard.address as `0x${string}`,
-    abi: CONTRACTS.leaderboard.abi,
+  return useReadContract({
+    ...(LEADERBOARD_CONTRACT as { address: `0x${string}`; abi: Abi }),
     functionName: 'getBuilder',
     args: [address],
   })

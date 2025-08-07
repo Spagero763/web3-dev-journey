@@ -19,6 +19,6 @@ export const CONTRACTS = {
   },
 };
 
-export const DEV_IDENTITY_CONTRACT = CONTRACTS.leaderboard;
+export const LEADERBOARD_CONTRACT = CONTRACTS.leaderboard;
 export const PROOF_OF_BUILD_CONTRACT = CONTRACTS.proofOfBuild;
 export const REPUTATION_TOKEN_CONTRACT = CONTRACTS.reputationToken;
