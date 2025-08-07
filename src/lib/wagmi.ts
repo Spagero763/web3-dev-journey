@@ -6,4 +6,8 @@ if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
 }
 
 export const config = getDefaultConfig({
-  appName: "Dev
+  appName: "Web3 Dev Journey",
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+  chains: [baseSepolia],
+  ssr: true,
+});
