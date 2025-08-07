@@ -1,24 +1,38 @@
 // hooks/useReputation.ts
-import { useWriteContract } from 'wagmi'
+import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { REPUTATION_TOKEN_CONTRACT } from '@/lib/contracts'
 import type { Abi } from 'viem';
+import { useAccount } from 'wagmi';
 
-export function useReputationMint(options: any = {}) {
-  const { writeContract, isPending, isSuccess, error, data } = useWriteContract()
+export function useClaimReputation(options: any = {}) {
+  const { address } = useAccount();
+  const { 
+    writeContract, 
+    data: hash, 
+    isPending: isSubmitting, 
+    error 
+  } = useWriteContract()
 
-  const mintReputation = (args: any) => {
-     writeContract({
+  const { 
+    isLoading: isConfirming, 
+    isSuccess: isConfirmed 
+  } = useWaitForTransactionReceipt({ hash })
+
+  const claimReputation = (args: { amount: bigint }) => {
+    if (!address) return;
+    writeContract({
       ...(REPUTATION_TOKEN_CONTRACT as { address: `0x${string}`; abi: Abi }),
       functionName: 'mint',
-      ...args,
+      args: [address, args.amount],
     }, options)
   }
 
   return {
-    mintReputation,
-    data,
-    isPending,
-    isSuccess,
+    claimReputation,
+    hash,
+    isSubmitting,
+    isConfirming,
+    isConfirmed,
     error,
   }
 }

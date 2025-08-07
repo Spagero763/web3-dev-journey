@@ -1,15 +1,14 @@
 // app/page.tsx
 "use client";
 
-import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { IdentityClaimCard } from "@/components/devhub/identity-claim-card";
 import { ProjectSubmissionCard } from "@/components/devhub/project-submission-card";
 import { ReputationBalanceCard } from "@/components/devhub/reputation-balance-card";
+import TopBuilder from "@/components/devhub/TopBuilder";
+import ClaimReputation from "@/components/devhub/ClaimReputation";
 
 export default function Home() {
-  const { isConnected } = useAccount();
-
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,8 +33,10 @@ export default function Home() {
           <IdentityClaimCard />
           <ProjectSubmissionCard />
         </div>
-        <aside>
+        <aside className="space-y-8">
           <ReputationBalanceCard />
+          <TopBuilder />
+          <ClaimReputation />
         </aside>
       </main>
 
