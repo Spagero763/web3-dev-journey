@@ -1,9 +1,13 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { baseSepolia } from "wagmi/chains";
 
+if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
+  throw new Error("NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not set in .env");
+}
+
 export const config = getDefaultConfig({
   appName: "DevHub",
-  projectId: "a67439a3f6f1a8b13919e535a8286f56", // Replace with your WalletConnect Project ID
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
   chains: [baseSepolia],
   ssr: true,
 });

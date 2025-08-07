@@ -16,20 +16,18 @@ export default function ClaimReputation() {
   const { isConnected } = useAccount();
 
   const { claimReputation, isSubmitting, isConfirming, isConfirmed, error } = useClaimReputation({
-    mutation: {
-      onSuccess: () => {
-        toast({
-          title: "Transaction Sent",
-          description: "Your reputation claim has been submitted.",
-        });
-      },
-      onError: (err: Error) => {
-        toast({
-          variant: "destructive",
-          title: "Transaction Failed",
-          description: err.message,
-        });
-      },
+    onSuccess: () => {
+      toast({
+        title: "Transaction Sent",
+        description: "Your reputation claim has been submitted.",
+      });
+    },
+    onError: (err: Error) => {
+      toast({
+        variant: "destructive",
+        title: "Transaction Failed",
+        description: (err as any).shortMessage || err.message,
+      });
     },
   });
 
