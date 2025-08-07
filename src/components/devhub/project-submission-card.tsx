@@ -92,7 +92,7 @@ export function ProjectSubmissionCard() {
   const isLoading = isSubmitting || isConfirming || isSummarizing;
 
   return (
-    <Card>
+    <Card className="bg-card/70 border-border/60">
       <CardHeader>
         <CardTitle>Submit Proof of Build</CardTitle>
         <CardDescription>
@@ -107,7 +107,7 @@ export function ProjectSubmissionCard() {
             <FileCode className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               id="repo-url"
-              placeholder="Enter your GitHub repository URL"
+              placeholder="https://github.com/your/repo"
               value={repoUrl}
               onChange={(e) => setRepoUrl(e.target.value)}
               disabled={isLoading}
@@ -137,7 +137,7 @@ export function ProjectSubmissionCard() {
         {(isSummarizing || summary) && (
           <div className="pt-4 space-y-2">
             <h3 className="font-semibold flex items-center">
-              <Sparkles className="w-4 h-4 mr-2 text-accent" />
+              <Sparkles className="w-4 h-4 mr-2 text-primary" />
               AI Project Summary
             </h3>
             {isSummarizing ? (
@@ -146,7 +146,7 @@ export function ProjectSubmissionCard() {
                 <p>Analyzing repository and generating summary...</p>
               </div>
             ) : (
-              <div className="p-4 bg-muted/50 rounded-lg border text-sm flex items-start space-x-3">
+              <div className="p-4 bg-muted/50 rounded-lg border border-border/60 text-sm flex items-start space-x-3">
                 <BookText className="w-5 h-5 mt-1 text-primary shrink-0" />
                 <p className="text-muted-foreground">{summary}</p>
               </div>

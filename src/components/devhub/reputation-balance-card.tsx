@@ -33,10 +33,10 @@ export function ReputationBalanceCard() {
       : "0.00";
 
   return (
-    <Card className="sticky top-20">
+    <Card className="sticky top-20 bg-card/70 border-border/60">
       <CardHeader>
         <CardTitle className="flex items-center text-base font-medium">
-          <Medal className="w-4 h-4 mr-2 text-accent" />
+          <Medal className="w-4 h-4 mr-2 text-primary" />
           Your Reputation
         </CardTitle>
         <CardDescription>
@@ -45,7 +45,7 @@ export function ReputationBalanceCard() {
       </CardHeader>
       <CardContent>
         {isLoading ? (
-          <Skeleton className="w-3/4 h-10" />
+          <Skeleton className="w-3/4 h-10 bg-muted/50" />
         ) : (
           <p className="text-3xl font-bold">{formattedBalance}</p>
         )}

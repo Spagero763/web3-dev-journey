@@ -46,7 +46,7 @@ export default function ClaimReputation() {
   const isLoading = isSubmitting || isConfirming;
 
   return (
-    <Card>
+    <Card className="bg-card/70 border-border/60">
       <CardHeader>
         <CardTitle className="flex items-center text-base font-medium">
           <Award className="w-4 h-4 mr-2 text-primary" />
@@ -57,7 +57,7 @@ export default function ClaimReputation() {
         <div className="flex items-center space-x-2">
           <Input
             type="number"
-            placeholder="Enter amount to claim"
+            placeholder="Amount"
             value={amount === 0 ? '' : amount}
             onChange={(e) => setAmount(Number(e.target.value))}
             disabled={isLoading}
