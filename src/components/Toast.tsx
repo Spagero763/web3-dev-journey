@@ -57,14 +57,14 @@ function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast:
   };
 
   return (
-    <div className=\"fixed bottom-4 right-4 z-50 space-y-2\">
+    <div className="fixed bottom-4 right-4 z-50 space-y-2">
       {toasts.map(toast => (
         <div
           key={toast.id}
-          className={\\ text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-slide-in\}
+          className={`${typeStyles[toast.type]} text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-slide-in`}
         >
           <span>{toast.message}</span>
-          <button onClick={() => removeToast(toast.id)} className=\"ml-2 hover:opacity-80\"></button>
+          <button onClick={() => removeToast(toast.id)} className="ml-2 hover:opacity-80">&times;</button>
         </div>
       ))}
     </div>
